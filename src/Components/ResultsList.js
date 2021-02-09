@@ -1,28 +1,34 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, FlatList} from 'react-native';
+import ResultDetail from '../Components/ResultsDetail'
 
-const ResultsList = ({title}) => {
+const ResultsList = ({title, results}) => {
 
-   return <View style={styles.componentView}>
-       <Text style={styles.titleStyle}>{title}</Text>
-
+   return <View>
+       <Text style={styles.titleStyle}>{title}</Text> 
+         
+        <FlatList 
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(result) => results.id}
+            data={results}
+            renderItem={({item}) => {
+                return (
+                    <ResultDetail result={item}/>
+                
+            )}}/>
     </View>
+
+    
 }
 
 const styles = StyleSheet.create({
 
     titleStyle: {
-        fontSize: 18,
-        fontWeight: 'bold'
-    },
-
-    componentView: {
-
-        display: 'flex',
-        flexDirection: 'row',
-        borderColor: 'grey',
-        borderWidth: 1,
-        marginHorizontal: 10
+        fontSize: 22,
+        fontWeight: 'bold',
+        marginLeft: 10,
+        marginBottom: 5
 
     }
 });
