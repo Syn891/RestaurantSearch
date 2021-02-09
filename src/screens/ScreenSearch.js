@@ -16,7 +16,7 @@ const SearchScreen = () => {
     };
 
    return (
-    <View style={{flex:1}}>
+    <>
     <ScreenDetail 
         term={term} 
         onTermChange={setTerm}
@@ -32,7 +32,7 @@ const SearchScreen = () => {
         <ResultsList results={filterResultsByPrice()} title="Price Band Unknown"/>
     </ScrollView>
     
-    </View>
+    </>
    )
 }
 
