@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {View, Text, StyleSheet, ScrollView} from 'react-native'
+import {Text, StyleSheet, ScrollView} from 'react-native'
 import ResultsList from '../Components/ResultsList'
 import ScreenDetail from '../Components/ScreenDetail'
 import useResults from '../hooks/useResults'
@@ -20,16 +20,17 @@ const SearchScreen = () => {
     <ScreenDetail 
         term={term} 
         onTermChange={setTerm}
-        onTermSubmit={() => searchApi()}/>
+        onTermSubmit={() => searchApi(term)}/>
 
     {errMessage ? <Text>{errMessage}</Text> : null}
     
     <ScrollView>
-        <ResultsList results={filterResultsByPrice('£')} title="Cost Effective"/>
-        <ResultsList results={filterResultsByPrice('££')} title="Bit Pricier"/>
-        <ResultsList results={filterResultsByPrice('£££')} title="Big Spender"/>
-        <ResultsList results={filterResultsByPrice('££££')} title="Break the Bank"/>
-        <ResultsList results={filterResultsByPrice()} title="Price Band Unknown"/>
+        <Text>{term}</Text>
+        <ResultsList results={filterResultsByPrice('£')} title="Cost Effective" />
+        <ResultsList results={filterResultsByPrice('££')} title="Bit Pricier" />
+        <ResultsList results={filterResultsByPrice('£££')} title="Big Spender" />
+        <ResultsList results={filterResultsByPrice('££££')} title="Break the Bank" />
+        <ResultsList results={filterResultsByPrice()} title="Price Band Unknown" />
     </ScrollView>
     
     </>
